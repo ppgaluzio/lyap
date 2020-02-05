@@ -1,0 +1,13 @@
+IFORT = ifort
+lqr =  /var/jobs/ppg06/LIB/statical/matqrinv.a
+MODS = -I/var/jobs/ppg06/LIB/modules
+OPCOES = -warn -r8 -i8 -ip -O3 -axsse4.2 -u
+EXEC = lyap.clv.so
+
+MAIN = calc.lyap.clv.mod.f90
+
+all: invt
+
+invt:
+	$(IFORT) -shared $(OPCOES) $(MAIN) $(lqr) $(MODS) -o $(EXEC)
+		
